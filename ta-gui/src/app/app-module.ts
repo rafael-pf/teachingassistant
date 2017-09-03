@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app';
+import { AlunoService } from './aluno.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppComponent } from './app';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    AlunoService
   ],
   bootstrap: [AppComponent]
 })

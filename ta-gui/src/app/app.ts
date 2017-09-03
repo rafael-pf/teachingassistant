@@ -11,8 +11,9 @@ import { AlunoService } from './aluno.service';
   styleUrls: ['./app.css']
 })
 export class AppComponent {
+   constructor(private alunoService: AlunoService) {}
+
    aluno: Aluno = {nome: "", cpf: "", email: "", loginGithub: ""};
-   alunoService = new AlunoService();
    alunos: Aluno[] = [];
    cpfduplicado: boolean = false;
 
