@@ -1,12 +1,20 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { provideServerRendering, withRoutes } from '@angular/ssr';
-import { App } from './app';
-import { AppModule } from './app-module';
-import { serverRoutes } from './app.routes.server';
+import { FormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing-module';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  imports: [AppModule],
-  providers: [provideServerRendering(withRoutes(serverRoutes))],
-  bootstrap: [App],
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppServerModule {}
+export class AppModule { }

@@ -1,11 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class App {
-  protected readonly title = signal('ta-gui-app');
+export class AppComponent {
+   aluno: Aluno = {nome: "", cpf: "", email: ""};
+}
+
+export class Aluno {
+  nome: string;
+  cpf: string;
+  email: string;
 }
