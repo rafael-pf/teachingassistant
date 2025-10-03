@@ -14,3 +14,17 @@ Given the system has already generated unique exams for students "Mari" and "Pau
 When I compare the exam assigned to "Mari" with the exam assigned to "Paulo"
 Then I can confirm the exams are not identical
 And each exam contains a unique combination of questions
+
+Scenario: Trying to generate an exam for a student not registered in the system
+Given I am at the exams page
+And the system has no student with CPF "690"
+When I try to generate an individual exam for student "Lucas" with CPF "690"
+Then I cannot see any exam created for "Lucas"
+And I can see an error message "Student not found"
+
+Scenario: Trying to generate an exam with no questions available in the question bank
+Given I am at the exams page
+And the question bank is empty
+When I try to generate an individual exam for student "Mari" with CPF "683"
+Then the system does not create an exam
+And I can see an error message "No questions available to generate exam"
