@@ -17,3 +17,19 @@ And I have started to edit the grade
 When I cancel the grade update
 Then I’m still at the "Grades" page
 And I can see student "Beatriz Rocha" still has grade "MPA" for learning goal "Refactor legacy code"
+
+Scenario: Attempting to update a grade after the grading period is closed
+Given I am at the "Grades" page for the "Software Engineering" course
+And a student "Laura Mendes" has grade "PA" for the learning goal "Deploy application"
+And the grading period for the "Software Engineering" course is closed
+When I try to update the grade to "MA" for "Laura Mendes" on the goal "Deploy application"
+Then I should see an error message "The grading period is closed and grades cannot be modified"
+And the grade for "Laura Mendes" must remain "PA"
+
+Scenario: Attempting to add a grade for a non-existent learning goal
+Given I am at the "Grades" page
+And I see the student "Roberto Dias" in the list
+And the learning goal "Analyze Big Data" does not exist for this course
+When I try to add the grade "MA" for "Roberto Dias" under the goal "Analyze Big Data"
+Then I should see an error message "Learning goal not found"
+And no grade should be recorded for "Roberto Dias" for that attempt
