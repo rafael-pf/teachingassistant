@@ -38,7 +38,7 @@ And I still on the exams page
 
 Scenario: Attempting to generate an exam for a student who already has one
 Given I am at the exams page
-And the system already has an exam assigned to student "Carlos" with CPF "701"
-When I try to generate another individual exam for student "Carlos" with CPF "701"
+And the system already has an exam assigned to student "Ana" with CPF "700"
+When I try to generate another individual exam for student "Ana" with CPF "700"
 Then the system does not create a new exam
 And I can see a message "Student already has an individual exam assigned"
