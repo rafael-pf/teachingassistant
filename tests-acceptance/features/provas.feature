@@ -28,3 +28,4 @@ And the question bank is empty
 When I try to generate an individual exam for student "Mari" with CPF "683"
 Then the system does not create an exam
 And I can see an error message "No questions available to generate exam"
+And I still on the exams page
