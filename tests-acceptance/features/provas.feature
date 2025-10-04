@@ -33,3 +33,4 @@ And the learning goal "Analyze Big Data" does not exist for this course
 When I try to add the grade "MA" for "Roberto Dias" under the goal "Analyze Big Data"
 Then I should see an error message "Learning goal not found"
 And no grade should be recorded for "Roberto Dias" for that attempt
+And I am still on the "Grades" page
