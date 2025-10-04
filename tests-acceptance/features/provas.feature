@@ -34,3 +34,11 @@ And the question bank is empty
 When I try to generate an individual exam for student "Mari" with CPF "683"
 Then the system does not create an exam
 And I can see an error message "No questions available to generate exam"
+
+Scenario: Attempting to generate an exam for a student who already has one
+Given I am at the exams page
+And the system already has an exam assigned to student "Carlos" with CPF "701"
+When I try to generate another individual exam for student "Carlos" with CPF "701"
+Then the system does not create a new exam
+And I can see a message "Student already has an individual exam assigned"
+And I still on the exams page
