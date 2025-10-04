@@ -8,7 +8,7 @@ And I see a student "João Souza" with grade "MPA" for learning goal "Refactor l
 When I update the grade to "MA" for "João Souza" goal "Refactor legacy code"
 Then I’m still at the "Grades" page
 And I can see student "João Souza" has grade "MA" for learning goal "Refactor legacy code"
-And the old grade "PA" is no longer visible
+And the old grade "MPA" is no longer visible
 
 Scenario: Canceling a grade update
 Given I am at the "Grades" page
@@ -20,11 +20,11 @@ And I can see student "Beatriz Rocha" still has grade "MPA" for learning goal "R
 
 Scenario: Attempting to update a grade after the grading period is closed
 Given I am at the "Grades" page for the "Software Engineering" course
-And a student "Laura Mendes" has grade "PA" for the learning goal "Deploy application"
+And a student "Laura Mendes" has grade "MPA" for the learning goal "Deploy application"
 And the grading period for the "Software Engineering" course is closed
 When I try to update the grade to "MA" for "Laura Mendes" on the goal "Deploy application"
 Then I should see an error message "The grading period is closed and grades cannot be modified"
-And the grade for "Laura Mendes" must remain "PA"
+And the grade for "Laura Mendes" must remain "MPA"
 
 Scenario: Attempting to add a grade for a non-existent learning goal
 Given I am at the "Grades" page
