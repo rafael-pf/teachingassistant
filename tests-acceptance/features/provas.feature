@@ -2,6 +2,12 @@ Feature: As a professor
          I want to generate individual exams for each student
          So that each student has a unique test
 
+Scenario: Generating an individual exam for a student without an existing exam
+Given I am at the exams page
+And I cannot see any exam assigned to student "Mari" with CPF "683"
+When I generate an individual exam for student "Mari" with CPF "683"
+Then I can see a unique exam assigned to "Mari" with CPF "683" in the exams list
+
 Scenario: Generating individual exams for all registered students
 Given the system has students registered with CPFs "685", "686" and "687"
 And none of these students have individual exams assigned
