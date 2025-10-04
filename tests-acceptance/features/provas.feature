@@ -42,9 +42,12 @@ When I try to add the grade "XYZ" for "Ana Costa" goal "Debug complex issues"
 Then I should see an error message "Grade is not valid"
 And student "Ana Costa" still has no grade for learning goal "Debug complex issues"
 
-Scenario: Removing an existing grade
+Scenario: Removing a grade and verifying the average recalculation
 Given I am at the "Grades" page
-And I see a student "Carlos Lima" with grade "MANA" for learning goal "Write quality tests"
-When I remove the grade for "Carlos Lima" goal "Write quality tests"
-Then I’m still at the "Grades" page
+And the student "Carlos Lima" has grade "MA" (value 10.0) for the learning goal "Write quality tests"
+And the student "Carlos Lima" has grade "MPA" (value 7.0) for the learning goal "Refactor legacy code"
+And the calculated average for "Carlos Lima" is 8.5
+When I remove the grade for "Carlos Lima" on the goal "Write quality tests"
+Then I should see a success message "Grade removed successfully"
 And I can see student "Carlos Lima" has no grade for learning goal "Write quality tests"
+And the calculated average for "Carlos Lima" should now be 7.0
