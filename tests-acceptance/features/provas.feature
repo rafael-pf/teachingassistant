@@ -52,3 +52,4 @@ Then I should see a success message "Grade removed successfully"
 And I can see student "Carlos Lima" has no grade for learning goal "Write quality tests"
 And the calculated average for "Carlos Lima" should now be 7.0
 
+
