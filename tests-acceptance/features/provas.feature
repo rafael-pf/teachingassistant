@@ -31,3 +31,4 @@ And the exam status is "Closed"
 When I try to register or modify the answers
 Then I should see an error message indicating that the exam cannot be modified
 And no changes should be saved in the system
+And the exam status should remain as "Closed"
