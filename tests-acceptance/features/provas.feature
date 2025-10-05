@@ -42,3 +42,10 @@ And the system already has an exam assigned to student "Ana" with CPF "700"
 When I try to generate another individual exam for student "Ana" with CPF "700"
 Then the system does not create a new exam
 And I can see a message "Student already has an individual exam assigned"
+
+Scenario: Preventing exam generation when question count is below minimum required
+Given the question bank contains only 2 questions
+And the minimum required per exam is 5 questions
+When I try to generate an individual exam for student "Rafael" with CPF "710"
+Then the system does not create the exam
+And I can see an error message "Not enough questions to generate exam"
