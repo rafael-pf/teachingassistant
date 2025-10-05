@@ -52,4 +52,10 @@ Then I should see a success message "Grade removed successfully"
 And I can see student "Carlos Lima" has no grade for learning goal "Write quality tests"
 And the calculated average for "Carlos Lima" should now be 7.0
 
-
+Scenario: Attempting to update a grade that was modified by another user
+Given the student "Julia Barroso" has a grade of "MPA" for the learning goal "System modeling"
+And I am on the "Grades" page viewing this grade
+When another professor updates the grade of "Julia Barroso" to "MA" in the background
+And I then try to update the original grade "MPA" to "MANA"
+Then I should see an error message "This grade has been modified since you loaded the page. Please refresh to see the latest version."
+And the grade for "Julia Barroso" must remain "MA" in the system
