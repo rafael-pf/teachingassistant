@@ -42,6 +42,14 @@ And the system already has an exam assigned to student "Ana" with CPF "700"
 When I try to generate another individual exam for student "Ana" with CPF "700"
 Then the system does not create a new exam
 And I can see a message "Student already has an individual exam assigned"
+And I still on the exams page
+
+Scenario: Cancelling the exam generation process before completion
+Given I am at the exams page
+And I have selected to generate exams for all registered students
+When I cancel the generation process before it finishes
+Then no new exams are created
+And I can see a message "Exam generation cancelled"
 
 Scenario: Preventing exam generation when question count is below minimum required
 Given the question bank contains only 2 questions
