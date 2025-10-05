@@ -57,3 +57,9 @@ And the minimum required per exam is 5 questions
 When I try to generate an individual exam for student "Rafael" with CPF "710"
 Then the system does not create the exam
 And I can see an error message "Not enough questions to generate exam"
+
+Scenario: Confirming exam uniqueness across all students
+Given the system has 10 students registered
+When I generate exams for all students
+Then I can confirm that no two students have identical exams
+And each exam has a unique combination of questions
