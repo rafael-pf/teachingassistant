@@ -32,3 +32,20 @@ When I try to register or modify the answers
 Then I should see an error message indicating that the exam cannot be modified
 And no changes should be saved in the system
 And the exam status should remain as "Closed"
+
+Scenario: Updating previously registered answers
+Given I am at the exam details page
+And the exam for student "Mari" with CPF "683" exists
+And the exam already has registered answers
+When I update some of the exam answers
+Then the updated answers should be saved successfully
+And the exam should display the new answers
+And the modification date of the exam should be updated
+
+Scenario: Attempting to register answers with invalid format
+Given I am at the exam details page
+And the exam for student "Mari" with CPF "683" exists
+When I try to register answers using an invalid format
+Then I should see an error message indicating that the format of the answers is invalid
+And the system should reject the submission
+And no invalid answers should be saved in the exam record
