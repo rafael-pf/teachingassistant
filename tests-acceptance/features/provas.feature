@@ -1,3 +1,18 @@
 Feature: As a professor
          I want to register the answers of the exam
          So that the exams can be corrected
+
+Scenario: Registering answers for an existing exam
+Given I am at the exam details page
+And the exam for student "Daniel" with CPF "123" exists
+And the exam currently has no registered answers
+When I register the answers for the exam
+Then the exam should display the registered answers
+And the exam status should be updated to "Ready for correction"
+
+Scenario: Attempting to register answers for a non-existing exam
+Given I am at the exams page
+And there is no exam assigned to student "Daniel" with CPF "123"
+When I try to register answers for the exam
+Then I should see an error message indicating that the exam does not exist
+And no answers should be registered in the system
