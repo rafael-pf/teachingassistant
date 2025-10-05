@@ -23,3 +23,11 @@ And the exam for student "Mari" with CPF "683" exists
 When I try to register the exam answers leaving some questions unanswered
 Then I should see a warning message indicating that all questions must be answered
 And the system should not save the incomplete answers
+
+Scenario: Attempting to register answers for a closed or corrected exam
+Given I am at the exam details page
+And the exam for student "Mari" with CPF "683" exists
+And the exam status is "Closed"
+When I try to register or modify the answers
+Then I should see an error message indicating that the exam cannot be modified
+And no changes should be saved in the system
