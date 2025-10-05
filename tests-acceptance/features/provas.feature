@@ -49,3 +49,4 @@ When I try to register answers using an invalid format
 Then I should see an error message indicating that the format of the answers is invalid
 And the system should reject the submission
 And no invalid answers should be saved in the exam record
+And the exam status should remain as "Closed"
