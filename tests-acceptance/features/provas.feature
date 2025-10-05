@@ -16,3 +16,10 @@ And there is no exam assigned to student "Daniel" with CPF "123"
 When I try to register answers for the exam
 Then I should see an error message indicating that the exam does not exist
 And no answers should be registered in the system
+
+Scenario: Attempting to register answers with incomplete data
+Given I am at the exam details page
+And the exam for student "Mari" with CPF "683" exists
+When I try to register the exam answers leaving some questions unanswered
+Then I should see a warning message indicating that all questions must be answered
+And the system should not save the incomplete answers
