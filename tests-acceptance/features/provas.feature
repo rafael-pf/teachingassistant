@@ -51,6 +51,11 @@ And the system should reject the submission
 And no invalid answers should be saved in the exam record
 And the exam status should remain as "Closed"
 
-commitquestao13
-
-commit1
+Scenario: Successfully registering answers for multiple students
+Given I am at the exams page
+And there are exams assigned to students "Mari" with CPF "683" and "João" with CPF "924"
+And both exams currently have no registered answers
+When I register the answers for both exams
+Then the system should save the answers for each exam correctly
+And each exam should display the registered answers
+And the status of both exams should be updated to "Ready for correction"
