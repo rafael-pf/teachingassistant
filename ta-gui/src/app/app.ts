@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  standalone: false,
+  templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
 export class AppComponent {
    aluno: Aluno = {nome: "", cpf: "", email: ""};
