@@ -34,8 +34,16 @@ export class Aluno {
 
   copyMetasFrom(from: Map<string,string>): void {
     this.metas = new Map<string,string>();
-    for (let key in from) {
-      this.metas[key] = from[key];
+    // Se for um Map, usar forEach
+    if (from instanceof Map) {
+      from.forEach((value, key) => {
+        this.metas.set(key, value);
+      });
+    } else {
+      // Se for um objeto, usar Object.entries
+      Object.entries(from).forEach(([key, value]) => {
+        this.metas.set(key, value as unknown as string);
+      });
     }
   }
 }
